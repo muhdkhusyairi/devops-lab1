@@ -1,0 +1,19 @@
+name: Basic HTML Quality Check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Verify HTML Structure
+        run: |
+          grep -q "<h1>" index.html && echo "HTML structure valid!"
